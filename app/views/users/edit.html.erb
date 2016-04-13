@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>Edit Profile</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+	*{
+		font-family: helvetica;
+		margin: 0 auto;
+	}
+
+	.container{
+		width: 850px;
+		height: 600px;
+		border: 1px solid black;
+		padding: 50px;
+	}
+	h2, a{
+		display: inline-block;
+	}
+	a{
+		margin-left: 450px;
+		font-size: 1.2em;
+	}
+	.deletebtn{
+		margin-left: 600px;
+	}
+	.dont{
+		margin-left: 625px;
+		color: lightgray;
+		opacity: 0.7;
+	}
+	.dont2{
+		margin-left: 610px;
+		margin-top: 5px;
+		color: lightgray;
+		opacity: 0.7;
+	}
+</style>
+<body>
+	<div class="container">
+		<h2>Edit Profile</h2>
+		<a href="/users/<%= @user.id %>">Back</a>
+		<form action="/update/<%= @user.id %>" method="post">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<label>
+				Email: <input type="text" name="email" value="<%= @user.email %>">
+			</label><br>
+			<label>
+				Name: <input type="text" name="name" value="<%= @user.name %>">
+			</label><br><br>
+			<input type="submit" value="Update" class="btn btn-info">
+		</form><br><br><br><br><br><br><br><br><br><br><br><br>
+
+		<p class="dont"><i>don't do it</i></p>
+		<form action="/destroy/<%= @user.id %>" method="post">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input type="submit" value="Delete Account" class="btn btn-danger deletebtn">
+		</form>
+		<p class="dont2"><i>a puppy will die</i></p>
+	</div>
+</body>
+</html>
